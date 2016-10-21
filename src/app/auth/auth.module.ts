@@ -6,6 +6,7 @@ import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
 import { AuthService } from './auth.service';
 import { HttpClient } from './http-client';
 import { UserService } from './user.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [CommonModule, HttpModule, RouterModule]
@@ -16,6 +17,7 @@ export class AuthModule {
       ngModule: AuthModule,
       providers: [
         AuthService,
+        AuthGuard,
         UserService,
         {
           provide: Http, useFactory: (injector, backend, defaultOptions, router) => {

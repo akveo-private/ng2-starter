@@ -23,7 +23,8 @@ import { AuthModule } from './auth/auth.module';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  { provide: 'environment', useValue: ENV }
 ];
 
 type StoreType = {

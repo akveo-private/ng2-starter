@@ -1,7 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, Optional } from '@angular/core';
 
 @Injectable()
 export class ConfigService {
+
+  private defaultEnv = 'development';
 
   private config = {
     development: {
@@ -12,15 +14,16 @@ export class ConfigService {
       loginUrl: '/login'
     },
     production: {
-      filesEndpoint: 'http://stg1.akveo.com/gamaya-backend',
-      dataEndpoint: 'http://stg1.akveo.com/gamaya-backend/data',
-      apiEndpoint: 'http://stg1.akveo.com/gamaya-backend/api',
+      filesEndpoint: '',
+      dataEndpoint: '',
+      apiEndpoint: '',
       redirectUrl: '/',
       loginUrl: '/login'
     }
   };
 
-  constructor(@Inject('environment') protected env: string) {
+  constructor(@Optional() @Inject('environment') protected env: string) {
+    this.env = this.env || this.defaultEnv;
   }
 
   getConfigParam(name: string, value = null): any {
