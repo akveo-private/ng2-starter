@@ -17,6 +17,8 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+import { UtilsModule } from './utils/utils.module';
+import { AuthModule } from './auth/auth.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -45,6 +47,8 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
+    UtilsModule.forRoot(),
+    AuthModule.forRoot(),
     PagesModule,
     routing
   ],
